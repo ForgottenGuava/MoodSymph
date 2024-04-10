@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<head>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: rgb(32, 79, 179);
+  color: white;
+  
+}
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(241, 81%, 30%);
+  height: 100px;
+}
+.emoji {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-40%); 
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  color: white;
+  
+}
+h2 {
+  font-size: 30px;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+}
+/* Create four equal columns that floats next to each other */
+/* .column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+  height: 200px; /* Should be removed. Only for demonstration */
+/* } */ */
+
+.modal_box{
+  height: 200px;
+  width: 50%;
+  background-color: rgb(57, 25, 241);
+}
+
+.transparent_button {
+    	background-color: transparent;
+        border: 0px;
+        cursor: pointer;
+      
+    }
+    
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.btn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #236b26;
+}
+ul{
+  padding-top: 40px;
+  text-decoration: none;
+  display: flex;
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  align-items: center;
+  
+
+}
+ul li {
+  width: 100%;
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 20px;
+  background-color:rgb(21, 55, 246);
+  
+}
+p {
+  font-size: 30px;
+}
+</style>
+</head>
+<body>
+<header>
+  <h2 style='text-align:center;'>Choose your mood</h2>
+  <p id="play_song"></p>
+</header>
+
+
+
+<div class="modal_box" style=" text-align:center; width: 800px;margin: 0 auto;">
+
+  <div class="emoji">
+    <ul>
+      <li>
+        <div class="column" style="text-align: center" >
+          <a href="HappyMusic/music.html">
+          <button class="transparent_button"  style='text-align:right; font-size:100px;' onclick="playSong('happy')">&#128512;</button>
+        </a>
+        </div>  
+        <p>Happy</p>
+      </li>
+      
+      <li>
+        <div class="column" style="text-align: center" >
+          <a href="SadMusic/music.html">
+          <button class="transparent_button"  style='text-align:right; font-size:100px;' onclick="playSong('sad')">&#128546;</button>
+        </a>
+        </div>
+        <p>Sad</p>
+      </li>
+
+      <li>
+        
+        <div class="column" style="text-align: center" >
+          <a href="TiredMusic/music.html">
+          <button class="transparent_button"  style='text-align:right; font-size:100px;' onclick="playSong('tired')">&#128555;</button>
+        </a>
+        </div>
+    
+        <p>Tired</p>
+      
+      </li>
+
+      <li>
+        <div class="column" style="text-align: center" >
+          <a href="RomanticMusic/music.html">
+          <button class="transparent_button"  style='text-align:right; font-size:100px;' onclick="playSong('romantic')">&#128155;</button></a>
+        </div>
+        <p>Romantic</p>
+      </li>
+
+      <li>
+        <div class="column" style="text-align: center" >
+          <a href="MotivationalMusic/music.html">
+          <button class="transparent_button"  style='text-align:right; font-size:100px;' onclick="playSong('motivational')">&#128516;</button></a>
+        </div>
+        <p>Motivational</p>
+      </li>
+
+      <li>
+        <div class="column" style="text-align: center" >
+          <a href="DanceMusic/music.html">
+          <button class="transparent_button"  style='text-align:right; font-size:100px;' onclick="playSong('dance')">&#128378;</button></a>
+        </div>
+        <p>Dance</p>
+      </li>
+
+      <li>
+        <div class="column" style="text-align: center" >
+          <a href="WorkoutMusic/music.html">
+          <button class="transparent_button"  style='text-align:right; font-size:100px;' onclick="playSong('workout')">&#127947;</button></a>
+          
+        </div>
+        <p>Workout</p>
+      </li>
+<li>
+  <div class="modal_box" style="background-color: rgb(19, 39, 141); text-align:center; width: 100%;margin: 0 auto;">
+    <a href="HappyMusic/music.html">
+    <button  class="btn">Random Play</button>
+  </a>
+  </div>
+</li>
+      
+    </ul>
+  
+    
+    
+    
+   
+    
+    
+    
+    </div>
+    
+<br><br><br><br><br><br><br><br><br>
+
+
+</div>
+<!-- 
+<script>
+  // Function to generate random number 
+  function randomNumber(min, max) { 
+      return Math.floor(Math.random() * (max - min) + min);
+  } 
+  function playSong(mood) {
+    // consider each mood has 10 songs
+    full_song_name = `./${mood}/${randomNumber(1,1)}.mp3`
+    document.getElementById("play_song").innerHTML = `<audio loop="loop" autoplay="autoplay"><source src=${full_song_name} type="audio/mpeg" /></audio>`;
+  }
+
+  function stopSong() {
+    document.getElementById("play_song").innerHTML = ""
+  }
+</script> -->
+
+</body>
+</html>
+
